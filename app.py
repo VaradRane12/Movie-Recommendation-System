@@ -14,13 +14,13 @@ st.set_page_config(
     layout="wide",
 )
 def fetch_trailer(movie_id):
-    response = requests.get(f"https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=af1d1e85e35255da989b33eaf4f5f47d")
+    response = requests.get(f"https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=")
     data = response.json()
     for i in data["results"]:
         if i["type"] == "Trailer":
             return f"https://www.youtube.com/watch?v={i['key']}"
 def fetch_poster(movie_id):
-    response = requests.get(f"https://api.themoviedb.org/3/movie/{movie_id}?api_key=af1d1e85e35255da989b33eaf4f5f47d")
+    response = requests.get(f"https://api.themoviedb.org/3/movie/{movie_id}?api_key=")
     data = response.json()
     return f"https://image.tmdb.org/t/p/w500/{data['poster_path']}"
 def recommend(movie,similarity):
