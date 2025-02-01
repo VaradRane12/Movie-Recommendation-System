@@ -34,7 +34,6 @@ def recommend(movie,similarity):
         movie_id = movies.iloc[i[0]].movie_id
 
         trailer.append(fetch_trailer(movie_id))
-        #fetch poster from api]
         recommended_movies.append(movies.iloc[i[0]].title)
         recommended_movies_poster.append(fetch_poster(movie_id))
     return recommended_movies,recommended_movies_poster,trailer
@@ -49,10 +48,8 @@ if st.button("Recommend"):
 
     names, posters, trailers = recommend(movie_name, similarity)
     st.write("Click to View trailer!")
-    # Create columns
     columns = st.columns(5)
 
-    # Loop through columns and data
     for i, col in enumerate(columns):
         with col:
             st.markdown(f"""
